@@ -7,65 +7,56 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class SocieteArrayList <T> implements IGestion <T>  {
-
-    private List<T> listEmployees;
+public class SocieteArrayList implements IGestion<Employee> {
+    private List<Employee> listEmployees;
 
     public SocieteArrayList() {
         listEmployees = new ArrayList<>();
     }
-
     @Override
-    public void ajouterEmploye(T employee) {
+    public void ajouterEmploye(Employee employee) {
         listEmployees.add(employee);
     }
 
     @Override
     public boolean rechercherEmploye(String nom) {
-/*        for (T employee : listEmployees) {
-            if(employee.getNom().equals(nom)){
-                return true ;
+        for (Employee employe : listEmployees) {
+            if (employe.getNom().equals(nom)) {
+                return true;
             }
-        }*/
-
+        }
         return false;
     }
 
     @Override
-    public boolean rechercherEmploye(T t) {
-        return listEmployees.contains(t);
+    public boolean rechercherEmploye(Employee employee) {
+        return listEmployees.contains(employee);
     }
 
     @Override
-    public void supprimerEmploye(T t) {
-         listEmployees.remove(t);
+    public void supprimerEmploye(Employee employee) {
+        listEmployees.remove(employee);
     }
 
     @Override
     public void displayEmploye() {
-        for (T employee: listEmployees) {
-            System.out.println(employee.toString());
+        for (Employee employee: listEmployees) {
+            System.out.println(employee);
         }
     }
 
     @Override
     public void trierEmployeParId() {
-       /* Collections.sort(listEmployees);*/
-
+        Collections.sort(listEmployees);
     }
 
     @Override
     public void trierEmployeParNomDépartementEtGrade() {
-        //error .getNom
-     /*   Collections.sort(listEmployees, new Comparator<T>() {
-            @Override
-            public int compare(T o1, T o2) {
-                int comparaisonNom = o1.getNom().compareTo(o2.getNom());
-                if (comparaisonNom !=0) return comparaisonNom;
-                int comparaisonDepartement = o1.getNomDepartement().compareTo(o2.getNomDepartement());
-                if (comparaisonDepartement !=0) return comparaisonDepartement;
-                return Integer.compare(o1.getGarde(), o2.getGarde());
-            }
-        });*/
+        Comparator<Employee> comparator = Comparator
+                .comparing(Employee::getNom)
+                .thenComparing(Employee::getNomDepartement)
+                .thenComparing(Employee::getGarde);
+        Collections.sort(listEmployees,comparator);
+
     }
 }

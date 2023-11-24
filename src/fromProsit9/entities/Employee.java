@@ -1,8 +1,6 @@
 package fromProsit9.entities;
 
-import java.util.Objects;
-
-public class Employee  {
+public class Employee implements Comparable<Employee> {
     private int id,garde;
     private String nom,prenom;
     private String nomDepartement;
@@ -80,5 +78,8 @@ public class Employee  {
     }
 
 
-
+    @Override
+    public int compareTo(Employee o) {
+        return Integer.compare(this.id,o.id);
+    }
 }
