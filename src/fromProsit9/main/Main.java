@@ -1,7 +1,11 @@
 package fromProsit9.main;
 
+import fromProsit9.entities.Departement;
+import fromProsit9.entities.DepartementHashSet;
 import fromProsit9.entities.Employee;
 import fromProsit9.entities.SocieteArrayList;
+
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,5 +29,25 @@ public class Main {
         System.out.println("###############################");
         s1.trierEmployeParNomDépartementEtGrade();
         s1.displayEmploye();
+        System.out.println("*********************************");
+        DepartementHashSet h1 = new DepartementHashSet();
+        Departement d1 = new Departement(1,"IT",500);
+        Departement d2 = new Departement(1,"IT",500);
+        Departement d3 = new Departement(2,"Network",200);
+        h1.ajouterDepartement(d1);
+        h1.displayDepartement();
+        System.out.println("-----------------------");
+
+        h1.ajouterDepartement(d3);
+        h1.displayDepartement();
+        System.out.println(h1.rechercherDepartement("Network"));
+        System.out.println(h1.rechercherDepartement(d2));
+        h1.displayDepartement();
+         
+
+
+
+
+
     }
 }
