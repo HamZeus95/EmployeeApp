@@ -1,9 +1,6 @@
 package fromProsit9.main;
 
-import fromProsit9.entities.Departement;
-import fromProsit9.entities.DepartementHashSet;
-import fromProsit9.entities.Employee;
-import fromProsit9.entities.SocieteArrayList;
+import fromProsit9.entities.*;
 
 import java.util.Comparator;
 
@@ -43,7 +40,22 @@ public class Main {
         System.out.println(h1.rechercherDepartement("Network"));
         System.out.println(h1.rechercherDepartement(d2));
         h1.displayDepartement();
-         
+        System.out.println("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€");
+        Departement departement1 = new Departement(101, "Dept1", 50);
+        Departement departement2 = new Departement(102, "Dept2", 75);
+        AffectationHashMap affectationHashMap = new AffectationHashMap();
+        affectationHashMap.ajouterEmployeDepartement(employee1, departement1);
+        affectationHashMap.ajouterEmployeDepartement(employee3, departement2);
+
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        // Essayez d'ajouter le même employé dans deux départements différents
+        affectationHashMap.ajouterEmployeDepartement(employee1, departement2);
+
+        affectationHashMap.afficherEmployesEtDepartements();
+
+        affectationHashMap.supprimerEmploye(employee1);
+        affectationHashMap.afficherEmployesEtDepartements();
 
 
 
